@@ -1,0 +1,89 @@
+/* General Styles */
+body {
+  background-color: #f8f9fa; /* Light background for the entire page */
+}
+
+.cart-layout {
+  display: flex;
+  gap: 20px; /* Space between the image and cart container */
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.cart-image {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cart-image img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.cart-container {
+  flex: 2;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Table Styles */
+.table {
+  margin-top: 20px; /* Space above the table */
+}
+
+.img-thumbnail {
+  border: 1px solid #dee2e6; /* Light border around images */
+}
+
+/* Button Styles */
+.btn {
+  transition: background-color 0.3s; /* Smooth transition for button hover effects */
+}
+
+.btn:hover {
+  background-color: #e2e6ea; /* Light gray background on hover */
+}
+
+.btn-success {
+  background-color: #28a745;
+  border-color: #28a745;
+}
+
+.btn-success:hover {
+  background-color: #218838;
+  border-color: #1e7e34;
+}
+
+.btn-primary {
+  background-color: #007bff;
+  border-color: #007bff;
+}
+
+.btn-primary:hover {
+  background-color: #0056b3;
+  border-color: #004085;
+}
+
+/* Text Styles */
+.text-success {
+  color: #28a745; /* Green color for success messages */
+}
+
+.text-muted {
+  color: #6c757d; /* Muted text color for empty cart message */
+}
+
+.border-top {
+  border-top: 1px solid #dee2e6; /* Top border for subtotal section */
+}
+
+.font-weight-bold {
+  font-weight: 700; /* Bold font for important text */
+}

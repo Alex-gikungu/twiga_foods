@@ -1,14 +1,26 @@
 import React, { useState } from "react";
-import axios from "axios";
-import "../styles/chatbot.css"; 
+import faqData from "../faq";  // Import the FAQ data
+import "../styles/chatbot.css";
 
 const Chatbot = () => {
   const [input, setInput] = useState("");
   const [messages, setMessages] = useState([]);
   const [isOpen, setIsOpen] = useState(false); // Toggle chat window
 
+  // Function to find the best-matching answer
+  const getAnswer = (userQuestion) => {
+    const lowerCaseInput = userQuestion.toLowerCase();
+    
+    // Try to find an exact match
+    const exactMatch = faqData.find(faq => lowerCaseInput.includes(faq.question.toLowerCase()));
+    
+    if (exactMatch) return exactMatch.answer;
+
+    return "Sorry, I don't understand that question. Please ask something else!";
+  };
+
   // Function to send message
-  const sendMessage = async () => {
+  const sendMessage = () => {
     if (!input.trim()) return;
 
     const userMessage = { role: "user", content: input };
@@ -17,27 +29,11 @@ const Chatbot = () => {
     setMessages(newMessages);
     setInput("");
 
-    try {
-      const response = await axios.post(
-        "https://api.openai.com/v1/chat/completions",
-        {
-          model: "gpt-3.5-turbo",
-          messages: newMessages,
-        },
-        {
-          headers: {
-            Authorization: `Bearer ${import.meta.env.VITE_OPENAI_API_KEY}`,
-            "Content-Type": "application/json",
-          },
-        }
-      );
+    // Get bot response
+    const botResponse = getAnswer(input);
+    const botMessage = { role: "assistant", content: botResponse };
 
-      const botMessage = { role: "assistant", content: response.data.choices[0].message.content };
-      setMessages([...newMessages, botMessage]);
-
-    } catch (error) {
-      console.error("Error fetching AI response:", error);
-    }
+    setMessages([...newMessages, botMessage]);
   };
 
   return (

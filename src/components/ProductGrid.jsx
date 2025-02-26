@@ -90,9 +90,9 @@ const ProductGrid = ({ products = [], addToCart = () => {}, cart = [] }) => {
           aria-label="Filter by price range"
         >
           <option value="all">All Prices</option>
-          <option value="low">Below $50</option>
-          <option value="medium">$50 - $100</option>
-          <option value="high"> Above $100</option>
+          <option value="low">Below kes50</option>
+          <option value="medium">kes50 - kes100</option>
+          <option value="high"> Above kes100</option>
         </select>
 
         <select
@@ -154,7 +154,7 @@ const ProductGrid = ({ products = [], addToCart = () => {}, cart = [] }) => {
 
       {/* Total Price Display */}
       <div className="total-price text-center mt-4">
-        <h4>Total Price: ${totalPrice.toFixed(2)}</h4>
+        <h4>Total Price: kes{totalPrice.toFixed(2)}</h4>
       </div>
 
       {/* Product Details Modal */}
@@ -170,7 +170,7 @@ const ProductGrid = ({ products = [], addToCart = () => {}, cart = [] }) => {
             </button>
             <h2>{selectedProduct.name}</h2>
             <img src={selectedProduct.image} alt={selectedProduct.name} className="modal-image" />
-            <p><strong>Price:</strong> ${selectedProduct.price}</p>
+            <p><strong>Price:</strong> kes{selectedProduct.price}</p>
             <p><strong>Description:</strong> {selectedProduct.description}</p>
 
             {/* User Ratings & Reviews */}

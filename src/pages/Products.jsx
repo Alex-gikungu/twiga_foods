@@ -53,7 +53,7 @@ const ProductsPage = () => {
     <div>
       <Navbar />
       <div className="container mt-4">
-        <h2 className="text-center mb-4">Our Products</h2>
+        <h2 className="text-center">Our Products</h2>
         <ProductGrid products={products} addToCart={addToCart} /> {/* Pass addToCart */}
       </div>
       <Footer />

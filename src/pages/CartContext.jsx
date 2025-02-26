@@ -4,6 +4,7 @@ export const CartContext = createContext();
 
 export const CartProvider = ({ children }) => {
   const [cart, setCart] = useState([]);
+  const [orders, setOrders] = useState([]); // Add orders state
 
   const addToCart = (product) => {
     const existingProduct = cart.find((item) => item.id === product.id);
@@ -32,8 +33,23 @@ export const CartProvider = ({ children }) => {
 
   const totalPrice = cart.reduce((total, item) => total + item.price * item.quantity, 0);
 
+  // Function to add an order
+  const addOrder = (order) => {
+    setOrders((prevOrders) => [...prevOrders, order]);
+  };
+
   return (
-    <CartContext.Provider value={{ cart, addToCart, removeFromCart, updateQuantity, totalPrice }}>
+    <CartContext.Provider
+      value={{
+        cart,
+        addToCart,
+        removeFromCart,
+        updateQuantity,
+        totalPrice,
+        orders, // Include orders in the context
+        addOrder, // Include addOrder function
+      }}
+    >
       {children}
     </CartContext.Provider>
   );

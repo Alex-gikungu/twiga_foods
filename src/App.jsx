@@ -6,17 +6,18 @@ import Products from "./pages/Products";
 import Cart from "./pages/Cart";
 import Checkout from "./pages/Checkout";
 import Orders from "./pages/Orders";
-import ScrollToTop from "./components/ScrollToTop";
 import Register from "./pages/Register";
 import Login from "./pages/Login";
-import Chatbot from "./components/Chatbot";  // Import chatbot
-import "../src/styles/chatbot.css";
+import ForgotPassword from "./components/ForgotPassword"; // Import ForgotPassword
+import Chatbot from "./components/Chatbot"; // Import Chatbot
+import ScrollToTop from "./components/ScrollToTop"; // Import ScrollToTop
+import "../src/styles/chatbot.css"; // Import chatbot styles
 
 function App() {
   return (
     <CartProvider>
       <Router>
-        <ScrollToTop />
+        <ScrollToTop /> {/* Ensures smooth scrolling between routes */}
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/products" element={<Products />} />
@@ -25,9 +26,10 @@ function App() {
           <Route path="/orders" element={<Orders />} />
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/forgot-password" element={<ForgotPassword />} />
         </Routes>
 
-        <Chatbot /> {/* Add floating chatbot */}
+        <Chatbot /> {/* Floating chatbot component */}
       </Router>
     </CartProvider>
   );

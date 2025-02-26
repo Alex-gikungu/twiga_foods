@@ -1,90 +1,94 @@
 import React, { useContext } from "react";
-import { CartContext } from "../pages/CartContext";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
-import "../styles/cart.css";
+import { DotLottieReact } from "@lottiefiles/dotlottie-react";
+import { CartContext } from "../pages/CartContext";
+import "bootstrap/dist/css/bootstrap.min.css";
 
-const Cart = () => {
-  const { cart, removeFromCart, updateQuantity, totalPrice } = useContext(CartContext);
-
-  const handleMpesaPayment = () => {
-    const phoneNumber = prompt("Enter your M-Pesa phone number:");
-    if (phoneNumber) {
-      alert(`Payment request sent to ${phoneNumber}. Total: Ksh ${totalPrice}`);
-    }
-  };
+const Orders = () => {
+  const { orders = [] } = useContext(CartContext);
 
   return (
-    <div className="min-h-screen bg-gray-100 flex flex-col">
+    <div className="min-vh-100 d-flex flex-column bg-light">
       <Navbar />
-      <div className="flex-grow p-6">
-        <h1 className="text-4xl font-bold text-green-600 mb-8 text-center">Shopping Cart</h1>
-        <div className="max-w-5xl mx-auto bg-white shadow-md rounded-lg p-6">
-          {cart.length === 0 ? (
-            <p className="text-center text-gray-600">Your cart is empty.</p>
-          ) : (
-            <>
-              <table className="w-full border-collapse">
-                <thead>
-                  <tr className="bg-gray-200">
-                    <th className="p-3 text-left">Product</th>
-                    <th className="p-3 text-center">Quantity</th>
-                    <th className="p-3 text-center">Price</th>
-                    <th className="p-3 text-center">Total</th>
-                    <th className="p-3 text-center">Remove</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {cart.map((item) => (
-                    <tr key={item.id} className="border-b">
-                      <td className="p-3 flex items-center">
-                        <img src={item.image} alt={item.name} className="w-16 h-16 object-cover rounded-lg" />
-                        <span className="ml-4">{item.name}</span>
-                      </td>
-                      <td className="p-3 text-center">
-                        <button className="px-2" onClick={() => updateQuantity(item.id, item.quantity - 1)}>-</button>
-                        <span className="mx-2">{item.quantity}</span>
-                        <button className="px-2" onClick={() => updateQuantity(item.id, item.quantity + 1)}>+</button>
-                      </td>
-                      <td className="p-3 text-center">Ksh {item.price}</td>
-                      <td className="p-3 text-center">Ksh {item.price * item.quantity}</td>
-                      <td className="p-3 text-center">
-                        <button className="text-red-500 hover:text-red-700" onClick={() => removeFromCart(item.id)}>X</button>
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-              
-              <div className="mt-6 p-4 border-t">
-                <div className="flex justify-between text-lg font-bold">
-                  <span>Subtotal:</span>
-                  <span>Ksh {totalPrice}</span>
-                </div>
-                <div className="flex justify-between text-lg font-bold">
-                  <span>Tax (16% VAT):</span>
-                  <span>Ksh {(totalPrice * 0.16).toFixed(2)}</span>
-                </div>
-                <div className="flex justify-between text-xl font-bold mt-2">
-                  <span>Total:</span>
-                  <span>Ksh {(totalPrice * 1.16).toFixed(2)}</span>
-                </div>
-              </div>
+      <div className="container flex-grow-1 py-4">
+        <h1 className="text-center text-success fw-bold mb-4">Order Tracking</h1>
 
-              <div className="mt-6 flex justify-between">
-                <button
-                  className="bg-green-600 text-white py-3 px-6 rounded-lg hover:bg-green-700 transition-colors"
-                  onClick={handleMpesaPayment}
-                >
-                  Pay with M-Pesa
-                </button>
-                <button
-                  className="bg-blue-600 text-white py-3 px-6 rounded-lg hover:bg-blue-700 transition-colors"
-                >
-                  Proceed to Shipping
-                </button>
+        <div className="card shadow-sm p-4">
+          {orders.length === 0 ? (
+            <div className="text-center">
+              <p className="fs-5 text-muted">No orders placed yet. Start shopping now!</p>
+              <div className="mx-auto" style={{ maxWidth: "300px" }}>
+                <DotLottieReact
+                  src="https://lottie.host/866f4773-933a-45d7-960c-886c67527c8e/aFvVks35hQ.lottie"
+                  loop
+                  autoplay
+                  style={{ width: "400px", height: "300px" }}
+                />
               </div>
-            </>
+            </div>
+          ) : (
+            <div className="row g-3">
+              {orders.map((order, index) => (
+                <div key={index} className="col-12">
+                  <div className="card border-secondary">
+                    <div className="card-body">
+                      <h5 className="card-title text-success">Order #{order.id}</h5>
+                      <p className="text-muted">📅 Placed on: <strong>{order.date}</strong></p>
+                      <p className="fs-5 fw-bold">💰 Total: Ksh {order.totalPrice}</p>
+
+                      {/* Order Tracking Progress */}
+                      <h6 className="mt-3">Order Status:</h6>
+                      <div className="progress mb-3">
+                        <div
+                          className={`progress-bar ${order.status >= 1 ? "bg-success" : "bg-secondary"}`}
+                          style={{ width: "25%" }}
+                        >
+                          Order Placed
+                        </div>
+                        <div
+                          className={`progress-bar ${order.status >= 2 ? "bg-success" : "bg-secondary"}`}
+                          style={{ width: "25%" }}
+                        >
+                          Processing
+                        </div>
+                        <div
+                          className={`progress-bar ${order.status >= 3 ? "bg-success" : "bg-secondary"}`}
+                          style={{ width: "25%" }}
+                        >
+                          Shipped
+                        </div>
+                        <div
+                          className={`progress-bar ${order.status >= 4 ? "bg-success" : "bg-secondary"}`}
+                          style={{ width: "25%" }}
+                        >
+                          Delivered
+                        </div>
+                      </div>
+
+                      {/* Order Status Steps */}
+                      <div className="d-flex justify-content-between">
+                        {["Order Placed", "Processing", "Shipped", "Delivered"].map((step, i) => (
+                          <div key={i} className="text-center">
+                            <div
+                              className={`rounded-circle text-white fw-bold d-flex align-items-center justify-content-center ${
+                                i <= order.status ? "bg-success" : "bg-secondary"
+                              }`}
+                              style={{ width: "40px", height: "40px" }}
+                            >
+                              {i + 1}
+                            </div>
+                            <p className={`mt-1 ${i <= order.status ? "text-success fw-bold" : "text-muted"}`}>
+                              {step}
+                            </p>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
           )}
         </div>
       </div>
@@ -93,4 +97,4 @@ const Cart = () => {
   );
 };
 
-export default Cart;
+export default Orders;

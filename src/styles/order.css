@@ -1,0 +1,71 @@
+.orders-page {
+    min-height: 100vh;
+    background-color: #f8f9fa;
+  }
+  
+  .lottie-container {
+    max-width: 300px;
+    margin: auto;
+  }
+  
+  .order-card {
+    border-radius: 10px;
+    border: 1px solid #dee2e6;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .order-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
+  }
+  
+  .order-id-badge {
+    background: #28a745;
+    color: white;
+    padding: 3px 7px;
+    border-radius: 50%;
+    font-size: 14px;
+    margin-left: 8px;
+  }
+  
+  .estimated-delivery {
+    color: #ff6600;
+    font-weight: bold;
+  }
+  
+  .order-progress {
+    border-radius: 50px;
+    overflow: hidden;
+  }
+  
+  .active-progress {
+    transition: width 1s ease-in-out;
+  }
+  
+  .status-circle {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    background-color: #6c757d;
+    color: white;
+    transition: all 0.3s;
+  }
+  
+  .status-circle.completed {
+    background-color: #28a745;
+  }
+  
+  .status-label {
+    margin-top: 5px;
+  }
+  
+  .support-btn {
+    background-color: #ffc107;
+    font-weight: bold;
+    border-radius: 5px;
+  }
+  

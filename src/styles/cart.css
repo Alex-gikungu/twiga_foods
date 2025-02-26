@@ -1,11 +1,11 @@
 /* General Styles */
 body {
-  background-color: #f8f9fa; /* Light background for the entire page */
+  background-color: #f8f9fa;
 }
 
 .cart-layout {
   display: flex;
-  gap: 20px; /* Space between the image and cart container */
+  gap: 20px;
   max-width: 1200px;
   margin: 0 auto;
   padding: 20px;
@@ -35,20 +35,27 @@ body {
 
 /* Table Styles */
 .table {
-  margin-top: 20px; /* Space above the table */
+  margin-top: 20px;
 }
 
 .img-thumbnail {
-  border: 1px solid #dee2e6; /* Light border around images */
+  border: 1px solid #dee2e6;
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
 }
 
 /* Button Styles */
 .btn {
-  transition: background-color 0.3s; /* Smooth transition for button hover effects */
+  transition: background-color 0.3s, transform 0.2s;
+  font-size: 14px;
+  padding: 6px 12px;
+  border-radius: 5px;
 }
 
 .btn:hover {
-  background-color: #e2e6ea; /* Light gray background on hover */
+  background-color: #e2e6ea;
+  transform: scale(1.05);
 }
 
 .btn-success {
@@ -71,19 +78,95 @@ body {
   border-color: #004085;
 }
 
+/* Input Fields */
+input[type="text"],
+input[type="number"] {
+  width: 100%;
+  padding: 6px 10px;
+  font-size: 14px;
+  border: 1px solid #ced4da;
+  border-radius: 5px;
+}
+
 /* Text Styles */
 .text-success {
-  color: #28a745; /* Green color for success messages */
+  color: #28a745;
 }
 
 .text-muted {
-  color: #6c757d; /* Muted text color for empty cart message */
+  color: #6c757d;
 }
 
 .border-top {
-  border-top: 1px solid #dee2e6; /* Top border for subtotal section */
+  border-top: 1px solid #dee2e6;
 }
 
 .font-weight-bold {
-  font-weight: 700; /* Bold font for important text */
+  font-weight: 700;
+}
+
+
+.shipping-details {
+    width: 100%;
+    max-width: 600px;
+    margin: auto;
+    padding: 20px;
+    background: #f8f9fa;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.shipping-details h3 {
+    text-align: center;
+    margin-bottom: 15px;
+    color: #333;
+}
+
+.shipping-details label {
+    font-weight: bold;
+    display: block;
+    margin-top: 10px;
+}
+
+.shipping-details input,
+.shipping-details select,
+.shipping-details textarea {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.shipping-details textarea {
+    height: 80px;
+    resize: none;
+}
+
+.summary {
+    margin-top: 20px;
+    font-size: 16px;
+}
+
+.summary p {
+    display: flex;
+    justify-content: space-between;
+    font-weight: bold;
+}
+
+.pay-btn {
+    width: 100%;
+    padding: 12px;
+    background: #28a745;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-top: 15px;
+}
+
+.pay-btn:hover {
+    background: #218838;
 }

@@ -1,23 +1,79 @@
-import React, { useContext } from "react";
+import React, { useState, useContext } from "react";
+import { useNavigate } from "react-router-dom";
 import { CartContext } from "../pages/CartContext";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
-import { DotLottieReact } from "@lottiefiles/dotlottie-react"; 
+import { DotLottieReact } from "@lottiefiles/dotlottie-react";
 import "../styles/cart.css";
 
 const Cart = () => {
-  const { cart, removeFromCart, updateQuantity, totalPrice } = useContext(CartContext);
+  const { cart, removeFromCart, updateQuantity, totalPrice, addOrder } = useContext(CartContext);
+  const navigate = useNavigate();
   const formattedTotalPrice = totalPrice ? totalPrice.toFixed(2) : "0.00";
 
-  const handleMpesaPayment = () => {
-    const phoneNumber = prompt("Enter your M-Pesa phone number:");
-    if (phoneNumber) {
-      alert(`Payment request sent to ${phoneNumber}. Total: Ksh ${formattedTotalPrice}`);
+  const [showShipping, setShowShipping] = useState(false);
+  const [paymentMethod, setPaymentMethod] = useState("");
+  const [shippingFee, setShippingFee] = useState(0);
+  const [phoneNumber, setPhoneNumber] = useState("");
+  const [shippingDetails, setShippingDetails] = useState({
+    location: "",
+    pickupPoint: "",
+    shippingPhone: "",
+  });
+
+  const totalAmount = (parseFloat(formattedTotalPrice) + parseFloat(shippingFee)).toFixed(2);
+
+  const handleShippingToggle = () => {
+    setShowShipping(!showShipping);
+  };
+
+  const handleShippingChange = (e) => {
+    const { name, value } = e.target;
+    setShippingDetails({ ...shippingDetails, [name]: value });
+
+    if (name === "location") {
+      const fees = {
+        Nairobi: 200,
+        Kisumu: 200,
+        Mombasa: 300,
+        Nakuru: 150,
+        Eldoret: 180,
+      };
+      setShippingFee(fees[value] || 0);
     }
   };
 
-  const handleProceedToShipping = () => {
-    alert("Proceeding to shipping details...");
+  const handleOrderPlacement = () => {
+    if (!shippingDetails.location || !shippingDetails.shippingPhone) {
+      alert("Please fill in the shipping details first.");
+      return;
+    }
+    if (!paymentMethod) {
+      alert("Please select a payment method.");
+      return;
+    }
+
+    if (paymentMethod === "mpesa" && !phoneNumber) {
+      alert("Please enter your M-Pesa phone number.");
+      return;
+    }
+
+    // Create a new order object
+    const newOrder = {
+      id: Date.now(), // Use a unique ID (e.g., timestamp)
+      date: new Date().toLocaleString(), // Add the current date and time
+      items: cart, // Include the cart items
+      totalPrice: totalAmount, // Include the total price
+      status: 1, // Initial status (e.g., "Packed")
+    };
+
+    // Add the order to the orders array in CartContext
+    addOrder(newOrder);
+
+    alert(`Order placed successfully using ${paymentMethod === "mpesa" ? "M-Pesa" : "Cash on Delivery"}. Total: Ksh ${totalAmount}`);
+
+    // Redirect to the orders page after successful order placement
+    navigate("/orders");
   };
 
   return (
@@ -87,25 +143,37 @@ const Cart = () => {
                   ))}
                 </tbody>
               </table>
-              
-              <div className="mt-4 p-3 border-top">
-                <div className="d-flex justify-content-between">
-                  <span className="font-weight-bold">Subtotal:</span>
-                  <span>Ksh {formattedTotalPrice}</span>
+              <button className="btn btn-primary mt-4 w-100" onClick={handleShippingToggle}>
+                {showShipping ? "Hide Shipping Details" : "Enter Shipping Details"}
+              </button>
+              {showShipping && (
+                <div className="mt-3 border p-3 rounded bg-light">
+                  <label>Location:</label>
+                  <select
+                    name="location"
+                    className="form-control mb-2"
+                    onChange={handleShippingChange}
+                    value={shippingDetails.location}
+                  >
+                    <option value="">Select Location</option>
+                    <option value="Nairobi">Nairobi - Ksh 200</option>
+                    <option value="Kisumu">Kisumu - Ksh 200</option>
+                    <option value="Mombasa">Mombasa - Ksh 300</option>
+                    <option value="Nakuru">Nakuru - Ksh 150</option>
+                    <option value="Eldoret">Eldoret - Ksh 180</option>
+                  </select>
+                  <label>Pickup Point:</label>
+                  <input type="text" name="pickupPoint" className="form-control mb-2" onChange={handleShippingChange} />
+                  <label>Phone Number:</label>
+                  <input type="text" name="shippingPhone" className="form-control mb-2" onChange={handleShippingChange} />
                 </div>
-                <div className="d-flex justify-content-between font-weight-bold mt-2">
-                  <span>Total:</span>
-                  <span>Ksh {formattedTotalPrice}</span>
-                </div>
-              </div>
-
-              <div className="mt-4 d-flex justify-content-between">
-                <button className="btn btn-success" onClick={handleMpesaPayment}>
-                  Pay with M-Pesa
-                </button>
-                <button className="btn btn-primary" onClick={handleProceedToShipping}>
-                  Proceed to Shipping
-                </button>
+              )}
+  <div className="mt-4 p-3 border-top">
+                <p>Select Payment Method:</p>
+                <input type="radio" name="payment" value="mpesa" onChange={(e) => setPaymentMethod(e.target.value)} /> M-Pesa
+                {paymentMethod === "mpesa" && <input type="text" className="form-control mt-2" placeholder="Enter M-Pesa Phone Number" onChange={(e) => setPhoneNumber(e.target.value)} />}<br/>
+                <input type="radio" name="payment" value="cod" onChange={(e) => setPaymentMethod(e.target.value)} /> Cash on Delivery
+                <button className="btn btn-success mt-3 w-100" onClick={handleOrderPlacement}>{paymentMethod === "mpesa" ? "Make Payment" : "Place Order"}</button>
               </div>
             </>
           )}

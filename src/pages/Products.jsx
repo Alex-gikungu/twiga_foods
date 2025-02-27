@@ -13,7 +13,7 @@ export const products = [
   { id: 3, name: "Oranges", category: "Fruits", price: 80, rating: 4.3, image: "https://www.halegroves.com/images/l/HG24-2459.jpg?v=1", reviews: [{ user: "Alice", comment: "Sweet and fresh!" }] },
   { id: 4, name: "Mangoes", category: "Fruits", price: 100, rating: 4.6, image: "https://media.istockphoto.com/id/501240197/photo/mangoes.jpg?s=612x612&w=0&k=20&c=jWjslLKAvMjIdrAed8ogGIJg-x9f8rnIXQVZuNvtdDo=", reviews: [{ user: "Bob", comment: "Delicious!" }] },
   { id: 5, name: "Tomatoes", category: "Vegetables", price: 40, rating: 4.2, image: "https://media.gettyimages.com/id/1509700903/photo/tomatoes-in-plastic-crates.jpg?s=612x612&w=0&k=20&c=E_gQZCp-It0ScZu5rNrxQ2IcA4CxdZwFwGX3NBctEnQ=", reviews: [{ user: "Charlie", comment: "Fresh and red!" }] },
-  { id: 6, name: "Onions", category: "Vegetables", price: 30, rating: 4.0, image: "https://www.finedininglovers.com/sites/g/files/xknfdk626/files/2023-03/onions.jpg", reviews: [{ user: "David", comment: "Good quality!" }] },
+  { id: 6, name: "Onions", category: "Vegetables", price: 30, rating: 4.0, image: "https://t3.ftcdn.net/jpg/10/34/90/12/360_F_1034901274_kr2l0gL4KK7K65SYsoHsUQbHFcQsIRMA.jpg", reviews: [{ user: "David", comment: "Good quality!" }] },
   { id: 7, name: "Kales (Sukuma Wiki)", category: "Vegetables", price: 20, rating: 4.1, image: "https://i0.wp.com/images-prod.healthline.com/hlcmsresource/images/AN_images/benefits-of-kale-1296x728-feature.jpg?w=1155&h=1528", reviews: [{ user: "Eve", comment: "Very fresh!" }] },
   { id: 8, name: "Cabbages", category: "Vegetables", price: 50, rating: 4.4, image: "https://images.saymedia-content.com/.image/c_limit,cs_srgb,fl_progressive,q_auto:eco,w_700/MTc2MjY3NDQ4MDA4NjQ3ODUz/4-types-of-cabbage.jpg", reviews: [{ user: "Frank", comment: "Great for cooking!" }] },
 
@@ -41,7 +41,7 @@ export const products = [
   // Household Items
   { id: 24, name: "Detergents", category: "Cleaning Supplies", price: 250, rating: 4.3, image: "https://t3.ftcdn.net/jpg/07/66/75/90/360_F_766759066_Zx5ZdfKxHllwX2s6HyRLt9tbP2xsqeSj.jpg", reviews: [{ user: "Victor", comment: "Cleans effectively!" }] },
   { id: 25, name: "Disinfectants", category: "Cleaning Supplies", price: 300, rating: 4.4, image: "https://h7.alamy.com/comp/BME2R6/bottle-of-antiseptic-dettol-liquid-disinfectant-BME2R6.jpg", reviews: [{ user: "Wendy", comment: "Keeps surfaces clean!" }] },
-  { id: 26, name: "Toilet Paper", category: "Personal Care", price: 150, rating: 4.5, image: "https://d16zmt6hgq1jhj.cloudfront.net/product/3054/Hannan%20Toilet%20Tissue%202%20Ply%20110%20Rolls.jpg", reviews: [{ user: "Xander", comment: "Soft and absorbent!" }] },
+  { id: 26, name: "Toilet Paper", category: "Personal Care", price: 150, rating: 4.5, image: "https://zandaux.com/image/images/643265a2944da.webp?p=medium", reviews: [{ user: "Xander", comment: "Soft and absorbent!" }] },
   { id: 27, name: "Soap", category: "Personal Care", price: 100, rating: 4.6, image: "https://images-na.ssl-images-amazon.com/images/I/61fdWm8j9dL.jpg", reviews: [{ user: "Yara", comment: "Leaves skin feeling fresh!" }] },
   { id: 28, name: "Toothpaste", category: "Personal Care", price: 80, rating: 4.2, image: "https://media.gettyimages.com/id/957766454/photo/stock-photo-of-boxes-of-colgate-toothpaste.jpg?s=612x612&w=0&k=20&c=y_Ht5jEf_h3yP0-FCw7fy5drsd_5X1r2D7X7YFYGJU4=", reviews: [{ user: "Zane", comment: "Great for oral hygiene!" }] },
 ];

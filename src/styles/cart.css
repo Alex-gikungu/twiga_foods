@@ -105,68 +105,110 @@ input[type="number"] {
   font-weight: 700;
 }
 
-
 .shipping-details {
-    width: 100%;
-    max-width: 600px;
-    margin: auto;
-    padding: 20px;
-    background: #f8f9fa;
-    border-radius: 10px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 600px;
+  margin: auto;
+  padding: 20px;
+  background: #f8f9fa;
+  border-radius: 10px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
 }
 
 .shipping-details h3 {
-    text-align: center;
-    margin-bottom: 15px;
-    color: #333;
+  text-align: center;
+  margin-bottom: 15px;
+  color: #333;
 }
 
 .shipping-details label {
-    font-weight: bold;
-    display: block;
-    margin-top: 10px;
+  font-weight: bold;
+  display: block;
+  margin-top: 10px;
 }
 
 .shipping-details input,
 .shipping-details select,
 .shipping-details textarea {
-    width: 100%;
-    padding: 10px;
-    margin-top: 5px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
 }
 
 .shipping-details textarea {
-    height: 80px;
-    resize: none;
+  height: 80px;
+  resize: none;
 }
 
 .summary {
-    margin-top: 20px;
-    font-size: 16px;
+  margin-top: 20px;
+  font-size: 16px;
 }
 
 .summary p {
-    display: flex;
-    justify-content: space-between;
-    font-weight: bold;
+  display: flex;
+  justify-content: space-between;
+  font-weight: bold;
 }
 
 .pay-btn {
-    width: 100%;
-    padding: 12px;
-    background: #28a745;
-    color: white;
-    font-size: 16px;
-    font-weight: bold;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    margin-top: 15px;
+  width: 100%;
+  padding: 12px;
+  background: #28a745;
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-top: 15px;
 }
 
 .pay-btn:hover {
-    background: #218838;
+  background: #218838;
+}
+
+/* Media Queries for Responsive Design */
+@media (max-width: 768px) {
+  .cart-layout {
+    flex-direction: column; /* Stack items vertically */
+    padding: 10px; /* Reduce padding */
+  }
+
+  .cart-image {
+    margin-bottom: 10px; /* Add space below the image */
+  }
+
+  .cart-container {
+    padding: 15px; /* Reduce padding in the cart container */
+  }
+
+  .table {
+    font-size: 12px; /* Smaller font size for tables */
+  }
+
+  .img-thumbnail {
+    width: 40px; /* Smaller thumbnail size */
+    height: 40px; /* Smaller thumbnail size */
+  }
+
+  .btn {
+    font-size: 12px; /* Smaller button font size */
+    padding: 4px 8px; /* Smaller button padding */
+  }
+
+  .shipping-details {
+    padding: 15px; /* Reduce padding in shipping details */
+  }
+
+  .summary {
+    font-size: 14px; /* Smaller summary font size */
+  }
+
+  .pay-btn {
+    font-size: 14px; /* Smaller pay button font size */
+    padding: 10px; /* Smaller pay button padding */
+  }
 }

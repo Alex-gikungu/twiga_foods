@@ -1,14 +1,17 @@
 /* Hover Effects for Navbar Links */
 .nav-hover {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   position: relative;
   display: inline-block;
   text-decoration: none;
   color: #333;
+  font-size: 1rem; /* Ensure uniform text size */
   transition: color 0.3s ease-in-out;
+  padding: 8px 12px; /* Adjust spacing */
 }
 
 .nav-hover:hover {
-  color: #007bff;
+  color: #ff6600;
 }
 
 /* Underline Animation */
@@ -19,7 +22,7 @@
   bottom: -3px;
   width: 100%;
   height: 2px;
-  background-color: #007bff;
+  background-color: #ff6600;
   transform: scaleX(0);
   transition: transform 0.3s ease-in-out;
 }
@@ -29,20 +32,47 @@
 }
 
 /* Cart Icon Styling */
-.cart-icon {
-  font-size: 1.3rem;
+.cart-container {
+  display: flex;
+  align-items: center;
   position: relative;
+}
+
+.cart-icon {
+  width: 40px !important;  /* Increase icon size */
+  height: 40px !important; /* Increase icon size */
   margin-right: 5px;
-  transition: transform 0.2s ease-in-out;
 }
 
-.cart-icon:hover {
-  transform: scale(1.2);
-}
-
-/* Badge Positioning for Cart */
 .badge {
-  font-size: 0.75rem;
-  padding: 3px 6px;
+  font-size: 0.8rem;
+  padding: 4px 8px;
   border-radius: 50%;
+  position: absolute;
+  top: -5px;
+  right: -10px;
+}
+
+/* Adjust Button Styles */
+.btn {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-size: 0.9rem; /* Reduce font size */
+  padding: 8px 12px; /* Adjust padding */
+  border-radius: 10px;
+  font-weight: 900;
+  min-width: 100px; /* Make buttons uniform */
+  text-align: center;
+}
+
+.btn-outline-primary,
+.btn-primary {
+  padding: 8px 12px;
+  font-size: 0.9rem;
+}
+
+/* Adjust Navbar for Better Alignment */
+.navbar-nav {
+  display: flex;
+  align-items: center;
+  gap: 10px; /* Even spacing between elements */
 }

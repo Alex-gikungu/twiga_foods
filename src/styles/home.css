@@ -1,185 +1,277 @@
+/* Custom styles for the Home page */
 
-  /* Custom styles for the Home page */
-  
-  /* Background Image */
-  .home-background {
-    background-image: url('https://foodtech-files.s3-eu-west-2.amazonaws.com/574542094773a015532f26fd2e03b539f6e69cc3a49e462380ad2a35b9478de3'); /* Add your background image */
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    min-height: 100vh;
-    position: relative;
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+/* Background Image */
+.home-background {
+  background-image: url('https://foodtech-files.s3-eu-west-2.amazonaws.com/574542094773a015532f26fd2e03b539f6e69cc3a49e462380ad2a35b9478de3'); /* Add your background image */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+  position: relative;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+/* Overlay for better readability */
+.home-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5); /* Semi-transparent black */
+  z-index: 0; /* Ensure it stays behind the content */
+}
+
+/* Header Section */
+.home-header {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  padding-top: 4rem;
+}
+
+.home-header h1 {
+  font-size: 3rem;
+  font-weight: bold;
+  color: #ffffff;
+  margin-bottom: 1rem;
+  animation: fadeInDown 1s ease-in-out;
+}
+
+.home-header p {
+  font-size: 1.25rem;
+  color: #e2e8f0;
+  animation: fadeInUp 1s ease-in-out;
+}
+
+/* Hero Section */
+.home-hero {
+  position: relative;
+  z-index: 1;
+  background: rgba(255, 255, 255, 0.9);
+  padding: 2rem;
+  border-radius: 1rem;
+  max-width: 800px;
+  margin: 2rem auto;
+  animation: fadeIn 1.5s ease-in-out;
+}
+
+.home-hero h2 {
+  font-size: 2rem;
+  font-weight: 600;
+  color: #2d3748;
+  margin-bottom: 1rem;
+}
+
+.home-hero p {
+  font-size: 1rem;
+  color: #4a5568;
+  margin-bottom: 2rem;
+}
+
+.home-hero .cta-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.home-hero .cta-buttons a {
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  font-weight: 500;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.home-hero .cta-buttons a:first-child {
+  background-color: #38a169;
+  color: #ffffff;
+}
+
+.home-hero .cta-buttons a:first-child:hover {
+  background-color: #2f855a;
+}
+
+.home-hero .cta-buttons a:last-child {
+  background-color: #2d3748;
+  color: #ffffff;
+}
+
+.home-hero .cta-buttons a:last-child:hover {
+  background-color: #1a202c;
+}
+
+/* Features Section */
+.home-features {
+  position: relative;
+  z-index: 1;
+  padding: 4rem 1rem;
+  text-align: center;
+}
+
+.home-features h3 {
+  font-size: 2rem;
+  font-weight: 600;
+  color: #ffffff;
+  margin-bottom: 2rem;
+  animation: fadeInDown 1s ease-in-out;
+}
+
+.home-features .feature-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.home-features .feature-card {
+  background: rgba(255, 255, 255, 0.9);
+  padding: 2rem;
+  border-radius: 1rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  animation: fadeInUp 1s ease-in-out;
+}
+
+.home-features .feature-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.home-features .feature-card h4 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #2d3748;
+  margin-bottom: 1rem;
+}
+
+.home-features .feature-card p {
+  font-size: 1rem;
+  color: #4a5568;
+}
+
+/* Hot Deals Section */
+.home-hot-deals {
+  position: relative;
+  text-align: center;
+  color: #ffffff;
+  z-index: 1; /* Ensure it's above the overlay */
+}
+
+.hot-deals-animation {
+  width: 100px;
+  height: 100px;
+  margin: 0 auto;
+}
+
+.hot-deals-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+  padding: 20px;
+}
+
+.hot-deal-item {
+  background: white;
+  border-radius: 10px;
+  padding: 15px;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease;
+}
+
+.hot-deal-item:hover {
+  transform: scale(1.05); /* Add a hover effect */
+}
+
+.hot-deal-item img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.hot-deal-item h4 {
+  margin: 10px 0;
+  font-size: 1.2rem;
+}
+
+.hot-deal-item p {
+  margin: 5px 0;
+  color: #555;
+}
+
+.buy-now {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 8px 15px;
+  background: #28a745;
+  color: white;
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: bold;
+  cursor: pointer; /* Ensure the cursor changes to a pointer */
+}
+
+.buy-now:hover {
+  background: #ff4c4c;
+}
+
+
+.view-details {
+  background-color: #ff6600;
+  color: white;
+  margin-top: 10px;
+  padding: 8px 12px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background 0.3s;
+}
+
+.view-details:hover {
+  background-color: #e65c00;
+}
+.home-overlay {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: -1; /* Ensure it stays behind everything */
+}
+
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
   }
-  
-  /* Overlay for better readability */
-  .home-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.5); /* Dark overlay */
+  to {
+    opacity: 1;
   }
-  
-  /* Header Section */
-  .home-header {
-    position: relative;
-    z-index: 1;
-    text-align: center;
-    padding-top: 4rem;
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
   }
-  
-  .home-header h1 {
-    font-size: 3rem;
-    font-weight: bold;
-    color: #ffffff;
-    margin-bottom: 1rem;
-    animation: fadeInDown 1s ease-in-out;
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
-  
-  .home-header p {
-    font-size: 1.25rem;
-    color: #e2e8f0;
-    animation: fadeInUp 1s ease-in-out;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
   }
-  
-  /* Hero Section */
-  .home-hero {
-    position: relative;
-    z-index: 1;
-    background: rgba(255, 255, 255, 0.9);
-    padding: 2rem;
-    border-radius: 1rem;
-    max-width: 800px;
-    margin: 2rem auto;
-    animation: fadeIn 1.5s ease-in-out;
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
-  
-  .home-hero h2 {
-    font-size: 2rem;
-    font-weight: 600;
-    color: #2d3748;
-    margin-bottom: 1rem;
-  }
-  
-  .home-hero p {
-    font-size: 1rem;
-    color: #4a5568;
-    margin-bottom: 2rem;
-  }
-  
-  .home-hero .cta-buttons {
-    display: flex;
-    justify-content: center;
-    gap: 1rem;
-  }
-  
-  .home-hero .cta-buttons a {
-    padding: 0.75rem 1.5rem;
-    border-radius: 0.5rem;
-    font-size: 1rem;
-    font-weight: 500;
-    text-align: center;
-    transition: all 0.3s ease;
-  }
-  
-  .home-hero .cta-buttons a:first-child {
-    background-color: #38a169;
-    color: #ffffff;
-  }
-  
-  .home-hero .cta-buttons a:first-child:hover {
-    background-color: #2f855a;
-  }
-  
-  .home-hero .cta-buttons a:last-child {
-    background-color: #2d3748;
-    color: #ffffff;
-  }
-  
-  .home-hero .cta-buttons a:last-child:hover {
-    background-color: #1a202c;
-  }
-  
-  /* Features Section */
-  .home-features {
-    position: relative;
-    z-index: 1;
-    padding: 4rem 1rem;
-    text-align: center;
-  }
-  
-  .home-features h3 {
-    font-size: 2rem;
-    font-weight: 600;
-    color: #ffffff;
-    margin-bottom: 2rem;
-    animation: fadeInDown 1s ease-in-out;
-  }
-  
-  .home-features .feature-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 2rem;
-    max-width: 1200px;
-    margin: 0 auto;
-  }
-  
-  .home-features .feature-card {
-    background: rgba(255, 255, 255, 0.9);
-    padding: 2rem;
-    border-radius: 1rem;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    animation: fadeInUp 1s ease-in-out;
-  }
-  
-  .home-features .feature-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-  }
-  
-  .home-features .feature-card h4 {
-    font-size: 1.5rem;
-    font-weight: 600;
-    color: #2d3748;
-    margin-bottom: 1rem;
-  }
-  
-  .home-features .feature-card p {
-    font-size: 1rem;
-    color: #4a5568;
-  }
-  
-  /* Animations */
-  @keyframes fadeIn {
-    from {
-      opacity: 0;
-    }
-    to {
-      opacity: 1;
-    }
-  }
-  
-  @keyframes fadeInDown {
-    from {
-      opacity: 0;
-      transform: translateY(-20px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-  
-  @keyframes fadeInUp {
-    from {
-      opacity: 0;
-      transform: translateY(20px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
+}

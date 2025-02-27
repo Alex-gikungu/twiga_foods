@@ -1,8 +1,11 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import "../styles/navbar.css"; // Import custom CSS
+import { CartContext } from "../pages/CartContext"; // Import the CartContext
+import { DotLottieReact } from "@lottiefiles/dotlottie-react"; // Import Lottie animation
 
 const Navbar = () => {
+  const { cart } = useContext(CartContext); // Access cart from context
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   const handleAuth = () => {
@@ -43,11 +46,18 @@ const Navbar = () => {
                 Orders
               </Link>
             </li>
+
+            {/* Cart Icon with Lottie Animation */}
             <li className="nav-item position-relative">
               <Link className="nav-link nav-hover" to="/cart">
-                <i className="bi bi-cart3 cart-icon"></i>
+                <DotLottieReact
+                  src="https://lottie.host/d07f0871-fbf6-4808-8a1c-1affe3d8bb78/bowuQQP9sO.lottie"
+                  loop
+                  autoplay
+                  style={{ width: "80px", height: "80px", marginRight: "5px" }}
+                />
                 <span className="badge bg-danger position-absolute top-0 start-100 translate-middle">
-                  3
+                  {cart.length} {/* Dynamically show cart count */}
                 </span>
               </Link>
             </li>

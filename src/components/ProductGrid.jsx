@@ -138,7 +138,7 @@ const ProductGrid = ({ products = [], addToCart = () => {}, cart = [] }) => {
                     Add to Cart
                   </button>
                   <button
-                    className="btn btn-primary mt-2 ms-2"
+                    className="view-details"
                     onClick={() => setSelectedProduct(product)}
                   >
                     View Details
@@ -150,11 +150,6 @@ const ProductGrid = ({ products = [], addToCart = () => {}, cart = [] }) => {
         ) : (
           <p className="text-center mt-3">No products match the selected filters.</p>
         )}
-      </div>
-
-      {/* Total Price Display */}
-      <div className="total-price text-center mt-4">
-        <h4>Total Price: kes{totalPrice.toFixed(2)}</h4>
       </div>
 
       {/* Product Details Modal */}

@@ -6,7 +6,7 @@ import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import { CartContext } from "../pages/CartContext"; // Import the CartContext
 
-const products = [
+export const products = [
   // Fresh Produce
   { id: 1, name: "Bananas", category: "Fruits", price: 50, rating: 4.5, image: "https://upload.wikimedia.org/wikipedia/commons/4/4c/Bananas.jpg", reviews: [{ user: "John", comment: "Great bananas!" }] },
   { id: 2, name: "Watermelons", category: "Fruits", price: 200, rating: 4.7, image: "https://media.istockphoto.com/id/1000868444/photo/watermelon-on-a-white-background-isolated.jpg?s=612x612&w=0&k=20&c=B_qrnFmM7KDXXEjFBYweoEyQgtSmkN1P79xCxmfabhw=", reviews: [{ user: "Jane", comment: "Very juicy!" }] },

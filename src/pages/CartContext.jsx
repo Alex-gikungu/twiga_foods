@@ -1,12 +1,19 @@
-import React, { createContext, useState } from "react";
+import React, { createContext, useState, useContext } from "react";
+import { AuthContext } from "../AuthContext"; // Import AuthContext
 
 export const CartContext = createContext();
 
 export const CartProvider = ({ children }) => {
   const [cart, setCart] = useState([]);
   const [orders, setOrders] = useState([]); // Add orders state
+  const { isAuthenticated } = useContext(AuthContext); // Get authentication state
 
   const addToCart = (product) => {
+    if (!isAuthenticated) {
+      alert("You must be logged in to add items to the cart."); // Alert user
+      return; // Prevent adding to cart if not authenticated
+    }
+
     const existingProduct = cart.find((item) => item.id === product.id);
     if (existingProduct) {
       setCart(

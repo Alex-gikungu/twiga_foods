@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useLocation } from "react-router-dom";
 import faqData from "../faq";  // Import the FAQ data
 import "../styles/chatbot.css";
 
@@ -6,6 +7,13 @@ const Chatbot = () => {
   const [input, setInput] = useState("");
   const [messages, setMessages] = useState([]);
   const [isOpen, setIsOpen] = useState(false); // Toggle chat window
+
+  const location = useLocation();  // Get current location (URL path)
+
+  // Don't show chatbot on login or register pages
+  if (location.pathname === "/login" || location.pathname === "/register") {
+    return null;
+  }
 
   // Function to find the best-matching answer
   const getAnswer = (userQuestion) => {

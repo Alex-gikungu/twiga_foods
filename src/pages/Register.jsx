@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { FaEnvelope, FaPhone, FaLock } from "react-icons/fa";
+import { useNavigate } from "react-router-dom"; // Import useNavigate
 import "bootstrap/dist/css/bootstrap.min.css";
 
 const Register = () => {
@@ -9,14 +10,39 @@ const Register = () => {
     password: "",
   });
 
+  const navigate = useNavigate(); // Initialize useNavigate
+
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("User Registered:", formData);
-    // Handle registration logic here
+    console.log("User  Registered:", formData);
+
+    try {
+      const response = await fetch("https://twiga-backend.onrender.com/users", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
+      }
+
+      const data = await response.json();
+      console.log("Registration successful:", data);
+      
+      // Redirect to login page after successful registration
+      navigate("/login"); // Change this to your login route
+
+    } catch (error) {
+      console.error("Error during registration:", error);
+      // Handle error (e.g., show an error message to the user)
+    }
   };
 
   return (

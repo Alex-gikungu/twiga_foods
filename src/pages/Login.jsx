@@ -1,21 +1,41 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { FaEnvelope, FaLock } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
+import { AuthContext } from "../AuthContext"; // Import AuthContext
 import "bootstrap/dist/css/bootstrap.min.css";
 
 const Login = () => {
-  const [formData, setFormData] = useState({
-    email: "",
-    password: "",
-  });
+  const [formData, setFormData] = useState({ email: "", password: "" });
+  const navigate = useNavigate();
+  const { login } = useContext(AuthContext); // Get login function from context
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     console.log("User Logged In:", formData);
-    // Handle login logic here
+
+    try {
+      const response = await fetch("https://twiga-backend.onrender.com/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
+      }
+
+      const data = await response.json();
+      console.log("Login successful:", data);
+
+      login(); // Update global auth state
+      navigate("/"); // Redirect to home page
+    } catch (error) {
+      console.error("Error during login:", error);
+    }
   };
 
   return (
@@ -25,7 +45,6 @@ const Login = () => {
         <p className="text-center text-muted mb-4">Login to your Twiga Foods account.</p>
 
         <form onSubmit={handleSubmit}>
-          {/* Email Input */}
           <div className="mb-3">
             <label className="form-label fw-bold">Email</label>
             <div className="input-group">
@@ -42,7 +61,6 @@ const Login = () => {
             </div>
           </div>
 
-          {/* Password Input */}
           <div className="mb-3">
             <label className="form-label fw-bold">Password</label>
             <div className="input-group">
@@ -59,19 +77,15 @@ const Login = () => {
             </div>
           </div>
 
-          {/* Forgot Password Link */}
-          <div className="text-end mb-3">
-            <a href="/forgot-password" className="text-success fw-bold">Forgot Password?</a>
-          </div>
-
-          {/* Login Button */}
           <button type="submit" className="btn btn-success w-100">Login</button>
-
-          {/* Register Option */}
-          <div className="text-center mt-3">
-            <p className="mb-0">Don't have an account? <a href="/register" className="text-success fw-bold">Register</a></p>
-          </div>
         </form>
+
+        {/* Forgot Password Link */}
+        <div className="text-center mt-3">
+          <p className="mb-0">
+            <a href="/forgot-password" className="text-success fw-bold">Forgot Password?</a>
+          </p>
+        </div>
       </div>
     </div>
   );

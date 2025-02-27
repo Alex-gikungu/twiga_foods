@@ -1,38 +1,99 @@
 /* Floating chat button */
 .chat-button {
-    position: fixed;
-    bottom:80px;
-    right: 20px;
-    width: 50px;
-    height: 50px;
-    background-color:rgb(72, 255, 0);
-    font-size:25px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 1000;
-  }
-  
-  /* Chat window */
+  position: fixed;
+  bottom: 80px;
+  right: 20px;
+  width: 40px; /* Size of the button */
+  height: 40px; /* Size of the button */
+  background-color: rgb(72, 255, 0); /* Bright green color */
+  font-size: 20px; /* Size of the icon */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none; /* Remove default button border */
+  border-radius: 50%; /* Make it circular */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Add shadow for depth */
+  transition: background-color 0.3s, transform 0.3s; /* Smooth transitions */
+  z-index: 1000;
+}
+
+/* Hover effect for the chat button */
+.chat-button:hover {
+  background-color: rgb(56, 255, 0); /* Slightly darker green on hover */
+  transform: scale(1.05); /* Slightly enlarge on hover */
+}
+
+/* Optional: Focus effect for accessibility */
+.chat-button:focus {
+  outline: none; /* Remove default focus outline */
+  box-shadow: 0 0 0 3px rgba(56, 255, 0, 0.5); /* Add a focus ring */
+}
+
+/* Chat window */
+.chat-container {
+  width: 350px; /* Increased width for better readability */
+  max-height: 500px; /* Increased height for more messages */
+  overflow-y: auto;
+  position: fixed;
+  bottom: 150px;
+  right: 20px;
+  z-index: 1000;
+  border-radius: 10px; /* Rounded corners */
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3); /* Deeper shadow for depth */
+}
+
+/* Chat messages */
+.chat-box {
+  max-height: 400px; /* Adjusted for more messages */
+  overflow-y: auto;
+  padding: 10px;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  background-color: #f8f9fa; /* Light background for chat box */
+  border-radius: 10px; /* Rounded corners */
+}
+
+/* Individual message styles */
+.chat-box p {
+  margin: 5px 0; /* Space between messages */
+  padding: 10px; /* Padding for messages */
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  border-radius: 10px; /* Rounded corners for messages */
+}
+
+/* User message */
+.chat-box .user-message {
+  background-color: rgb(72, 255, 0); /* User message background */
+  color: white; /* User message text color */
+  text-align: right; /* Align user messages to the right */
+}
+
+/* Assistant message */
+.chat-box .assistant-message {
+  background-color: rgb(0, 123, 255); /* Assistant message background */
+  color: white; /* Assistant message text color */
+  text-align: left; /* Align assistant messages to the left */
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+/* Input field */
+.chat-container input {
+  flex: 1;
+  border-radius: 5px; /* Rounded corners */
+  border: 1px solid #ced4da; /* Light border */
+  padding: 10px; /* Padding for input */
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+/* Send button */
+.chat-container button {
+  border-radius: 5px; /* Rounded corners */
+  margin-left: 10px; /* Space between input and button */
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
   .chat-container {
-    width: 300px;
-    max-height: 400px;
-    overflow-y: auto;
-    position: fixed;
-    bottom:150px;
-    right: 20px;
-    z-index: 1000;
+      width: 90%; /* Full width on smaller screens */
+      right: 5%; /* Center it on smaller screens */
   }
-  
-  /* Chat messages */
-  .chat-box {
-    max-height: 300px;
-    overflow-y: auto;
-    padding: 10px;
-  }
-  
-  .chat-container input {
-    flex: 1;
-  }
-  
-  
+}

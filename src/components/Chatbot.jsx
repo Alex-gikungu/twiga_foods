@@ -9,15 +9,18 @@ const Chatbot = () => {
 
   // Function to find the best-matching answer
   const getAnswer = (userQuestion) => {
-    const lowerCaseInput = userQuestion.toLowerCase();
-    
-    // Try to find an exact match
-    const exactMatch = faqData.find(faq => lowerCaseInput.includes(faq.question.toLowerCase()));
-    
-    if (exactMatch) return exactMatch.answer;
-
+    const lowerCaseInput = userQuestion.toLowerCase().trim();
+  
+    // Try to find a match based on keywords
+    const match = faqData.find(faq =>
+      faq.question.some(q => lowerCaseInput.includes(q.toLowerCase()))
+    );
+  
+    if (match) return match.answer;
+  
     return "Sorry, I don't understand that question. Please ask something else!";
   };
+  
 
   // Function to send message
   const sendMessage = () => {

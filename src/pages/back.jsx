@@ -98,33 +98,3 @@ const Orders = () => {
 };
 
 export default Orders;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// edit 98f781f added chatbot
-// pick 60d3b57 added chatbot
-// pick 15320fd updated codes
-// pick 6524d04 new changes

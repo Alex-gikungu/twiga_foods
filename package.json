@@ -12,8 +12,12 @@
   "dependencies": {
     "@lottiefiles/dotlottie-react": "^0.13.0",
     "@tailwindcss/postcss": "^4.0.8",
-    "axios": "^1.7.9",
+    "axios": "^1.8.1",
+    "base-64": "^1.0.0",
     "bootstrap": "^5.3.3",
+    "cors": "^2.8.5",
+    "express": "^4.21.2",
+    "node-fetch": "^3.3.2",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-icons": "^5.5.0",
@@ -31,5 +35,18 @@
     "eslint-plugin-react-refresh": "^0.4.18",
     "globals": "^15.14.0",
     "vite": "^6.1.0"
-  }
+  },
+  "description": "This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.",
+  "main": "eslint.config.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Alex-gikungu/twiga_foods.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Alex-gikungu/twiga_foods/issues"
+  },
+  "homepage": "https://github.com/Alex-gikungu/twiga_foods#readme"
 }

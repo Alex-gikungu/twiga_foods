@@ -4,6 +4,7 @@ import { CartContext } from "../pages/CartContext";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import { DotLottieReact } from "@lottiefiles/dotlottie-react";
+import axios from "axios"; // Import axios for API requests
 import "../styles/cart.css";
 
 const Cart = () => {
@@ -43,6 +44,24 @@ const Cart = () => {
     }
   };
 
+// Cart.jsx
+const triggerMpesaSTKPush = async (amount, phone) => {
+  try {
+    console.log('Sending STK push request...');
+    const response = await axios.post('http://localhost:3000/api/stk-push', {
+      amount,
+      phone
+    });
+
+    console.log('STK push response:', response.data);
+
+    // Handle the response, e.g., display a success message or process further
+  } catch (error) {
+    console.error('Error initiating M-Pesa STK Push:', error);
+  }
+};
+
+
   const handleOrderPlacement = () => {
     if (!shippingDetails.location || !shippingDetails.shippingPhone) {
       alert("Please fill in the shipping details first.");
@@ -58,22 +77,22 @@ const Cart = () => {
       return;
     }
 
-    // Create a new order object
     const newOrder = {
-      id: Date.now(), // Use a unique ID (e.g., timestamp)
-      date: new Date().toLocaleString(), // Add the current date and time
-      items: cart, // Include the cart items
-      totalPrice: totalAmount, // Include the total price
-      status: 1, // Initial status (e.g., "Packed")
+      id: Date.now(),
+      date: new Date().toLocaleString(),
+      items: cart,
+      totalPrice: totalAmount,
+      status: 1,
     };
 
-    // Add the order to the orders array in CartContext
     addOrder(newOrder);
 
-    alert(`Order placed successfully using ${paymentMethod === "mpesa" ? "M-Pesa" : "Cash on Delivery"}. Total: Ksh ${totalAmount}`);
-
-    // Redirect to the orders page after successful order placement
-    navigate("/orders");
+    if (paymentMethod === "mpesa") {
+      triggerMpesaSTKPush(phoneNumber, totalAmount);
+    } else {
+      alert(`Order placed successfully using Cash on Delivery. Total: Ksh ${totalAmount}`);
+      navigate("/orders");
+    }
   };
 
   return (
@@ -168,7 +187,7 @@ const Cart = () => {
                   <input type="text" name="shippingPhone" className="form-control mb-2" onChange={handleShippingChange} />
                 </div>
               )}
-  <div className="mt-4 p-3 border-top">
+              <div className="mt-4 p-3 border-top">
                 <p>Select Payment Method:</p>
                 <input type="radio" name="payment" value="mpesa" onChange={(e) => setPaymentMethod(e.target.value)} /> M-Pesa
                 {paymentMethod === "mpesa" && <input type="text" className="form-control mt-2" placeholder="Enter M-Pesa Phone Number" onChange={(e) => setPhoneNumber(e.target.value)} />}<br/>
